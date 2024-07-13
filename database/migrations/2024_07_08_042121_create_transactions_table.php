@@ -14,7 +14,7 @@ class CreateTransactionsTable extends Migration
     public function up()
     {
         Schema::create('transactions', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
             $table->timestamp('date');
             $table->text('content');
             $table->decimal('amount', 15, 2);
