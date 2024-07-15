@@ -6,6 +6,7 @@ use App\Models\Transaction;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithStartRow;
+use Illuminate\Support\Facades\Session;
 
 class TransactionsImport implements ToModel, WithBatchInserts, WithStartRow
 {
@@ -17,12 +18,14 @@ class TransactionsImport implements ToModel, WithBatchInserts, WithStartRow
      */
     public function model(array $row)
     {
+        // Fetch the client_id from the session
+        $clientId = Session::get('client_id');
         return new Transaction([
             'date' => $row[0],
             'content' => $row[1],
             'amount' => $row[2],
             'type' => $row[3],
-            'client_id' => $row[4],
+            'client_id' => $clientId,
         ]);
     }
 
@@ -44,5 +47,10 @@ class TransactionsImport implements ToModel, WithBatchInserts, WithStartRow
     public function startRow(): int
     {
         return 2;
+    }
+
+    public function chunkSize(): int
+    {
+        return 1000; // Adjust the chunk size as needed
     }
 }

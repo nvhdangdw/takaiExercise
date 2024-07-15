@@ -1,5 +1,3 @@
-<!-- resources/views/import.blade.php -->
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,12 +6,20 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h2 class="mb-4">Import Transactions from Excel File</h2>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Import Transactions from Excel File</h2>
+            <form method="POST" action="{{ route('client.logout') }}">
+                @csrf
+                <button type="submit" class="btn btn-danger">Logout</button>
+            </form>
+        </div>
+
         @if(session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
         @endif
+
         <form action="/import" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
@@ -25,7 +31,9 @@
             </div>
             <button type="submit" class="btn btn-primary">Import</button>
         </form>
+
         <hr>
+
         <h4>Download Sample Excel File</h4>
         <a href="{{ url('/SampleTransactionList.xlsx') }}" class="btn btn-secondary">Download Sample Excel</a>
     </div>

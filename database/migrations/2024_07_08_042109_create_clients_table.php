@@ -15,7 +15,7 @@ class CreateClientsTable extends Migration
         Schema::create('clients', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('username')->unique();
-            $table->string('password_hash');
+            $table->string('password', 80);
             $table->timestamps();
         });
     }

@@ -3,15 +3,25 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\ExcelImportController;
-
+use App\Http\Middleware\AuthenticateClient;
+use App\Http\Controllers\ClientController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/clients/{clientId}/transactions', [TransactionController::class, 'getTransactions']);
+// Client Authentication Routes
+Route::get('client/login', [ClientController::class, 'showLoginForm'])->name('client.login');
+Route::post('client/login', [ClientController::class, 'login']);
+Route::post('client/logout', [ClientController::class, 'logout'])->name('client.logout');
 
 
-Route::get('/import', [ExcelImportController::class, 'showImportForm']);
-Route::post('/import', [ExcelImportController::class, 'importExcel']);    
+// Protected Routes
+Route::middleware(AuthenticateClient::class)->group(function () {
+    Route::post('/import', [ExcelImportController::class, 'importExcel']);
+    Route::get('/import', [ExcelImportController::class, 'showImportForm']);
+    Route::get('/clients/transactions', [TransactionController::class, 'getTransactions']);
+});
+
+// Sample Excel Download Route
 Route::get('/import/download-sample', [ExcelImportController::class, 'downloadSampleExcel']);
