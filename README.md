@@ -23,7 +23,7 @@
 
 ### For first time only !
 - `git clone https://github.com/nvhdangdw/takaiExercise.git`
-- `cd laravel-docker`
+- `cd takaiExercise`
 - `docker compose up -d --build`
 - `docker compose exec phpmyadmin chmod 777 /sessions`
 - `docker compose exec php bash`
@@ -38,9 +38,6 @@
 ### Laravel App
 - URL: http://localhost
 
-### Mailpit
-- URL: http://localhost:8025
-
 ### phpMyAdmin
 - URL: http://localhost:8080
 - Server: `db`
@@ -54,5 +51,8 @@
 - Username: `nvhdang`
 - Password: `nvhdang`
 - Database: `excel_import`
+
+### Primary Documentation 
+https://trello.com/c/6yYsFJp0
 
 
