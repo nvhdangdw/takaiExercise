@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Client>
  */
-class ClientFactory extends Factory
+class ClientFactory extends  Factory   
 {
     protected $model = Client::class;
 
@@ -21,7 +21,9 @@ class ClientFactory extends Factory
     public function definition()
     {
         return [
+            'id' => (string) Str::uuid(),
             'username' => $this->faker->name(),
+            'password' => bcrypt('DefaultPassword'),
             'api_token' => Str::random(60),
         ];
     }

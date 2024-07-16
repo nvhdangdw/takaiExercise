@@ -20,7 +20,6 @@ class CreateTransactionsTable extends Migration
             $table->decimal('amount', 15, 2);
             $table->string('type', 50);
             $table->uuid('client_id');
-            $table->foreign('client_id')->references('id')->on('clients');
             $table->timestamps();
         });
     }
