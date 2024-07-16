@@ -34,6 +34,13 @@
 ### From the second time
 - `docker compose up -d`
 
+### Start the Application
+- `docker compose exec php bash`
+- `php artisan migrate`
+- `php artisan db:seed`
+- `php artisan optimize:clear`
+- `php artisan serve`
+
 
 ### Laravel App
 - URL: http://localhost
