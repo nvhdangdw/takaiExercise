@@ -15,7 +15,7 @@ class TransactionsTableSeeder extends Seeder
     public function run(): void
     {
         //
-        $clientId = DB::table('clients')->where('username', 'testuser')->value('id');
+        $clientId = DB::table('clients')->where('username', 'ClientOne')->value('id');
 
         DB::table('transactions')->insert([
             [
