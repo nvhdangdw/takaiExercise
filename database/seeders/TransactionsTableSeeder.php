@@ -19,7 +19,7 @@ class TransactionsTableSeeder extends Seeder
 
         DB::table('transactions')->insert([
             [
-                'id' => (string) Str::uuid(),
+                
                 'date' => now()->subDays(1),
                 'content' => 'Any text there',
                 'amount' => 100.00,
@@ -29,7 +29,7 @@ class TransactionsTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'id' => (string) Str::uuid(),
+                
                 'date' => now()->subDays(2),
                 'content' => 'Any text there',
                 'amount' => -50.00,
@@ -39,7 +39,7 @@ class TransactionsTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'id' => (string) Str::uuid(),
+                
                 'date' => now()->subDays(3),
                 'content' => 'Another transaction',
                 'amount' => 200.00,
@@ -49,7 +49,7 @@ class TransactionsTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'id' => (string) Str::uuid(),
+                
                 'date' => now()->subDays(4),
                 'content' => 'Another transaction',
                 'amount' => -70.00,
